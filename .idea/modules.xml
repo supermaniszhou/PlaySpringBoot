@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SBMS.iml" filepath="$PROJECT_DIR$/SBMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myGenerator/myGenerator.iml" filepath="$PROJECT_DIR$/myGenerator/myGenerator.iml" />
+    </modules>
+  </component>
+</project>

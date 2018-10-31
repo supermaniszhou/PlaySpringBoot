@@ -1,0 +1,11 @@
+.lable-margin {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+.footer{
+    height: 30px;
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+}

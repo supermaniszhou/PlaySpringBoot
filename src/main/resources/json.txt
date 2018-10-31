@@ -1,0 +1,40 @@
+var tree = [
+            {
+                text: "Parent 1",
+                id: '',
+                nodes: [
+                    {
+                        text: "Child 1",
+                        href: "2",
+                        id: '',
+                        nodes: [
+                            {
+                                text: "Grandchild 1",
+                                href: "2",
+                                nodes: "",
+                            },
+                            {
+                                text: "Grandchild 2",
+                                href: "2",
+                            }
+                        ]
+                    },
+                    {
+                        text: "Child 2",
+                        href: "2",
+                    }
+                ]
+            },
+            {
+                text: "Parent 2"
+            },
+            {
+                text: "Parent 3"
+            },
+            {
+                text: "Parent 4"
+            },
+            {
+                text: "Parent 5"
+            }
+        ];

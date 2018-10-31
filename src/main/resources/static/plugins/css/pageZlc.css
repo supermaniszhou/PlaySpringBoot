@@ -1,0 +1,12 @@
+#wrapperZlc {
+    background-color: #ffffff;
+    margin-top: 0px;
+}
+
+#page-innerZlc {
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    background-color: transparent;
+    padding: 10px;
+    min-height: 700px;
+}

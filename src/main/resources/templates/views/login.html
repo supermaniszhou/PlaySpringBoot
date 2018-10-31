@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/common/main_head::mainHeader"></head>
+
+<body>
+<h1>Unique Login Form</h1>
+<div class="log">
+    <div class="content2">
+        <h2>登录</h2>
+        <form  id="loginForm">
+            <h4 id="errorInfo" style="color: red;"></h4>
+            <input type="text" name="username" value="USERNAME" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = 'USERNAME';}">
+            <input type="password" name="password" value="PASSWORD" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = 'PASSWORD';}">
+
+            <div class="button-row">
+                <input type="button" class="sign-in" value="登录" onclick="loginModule.login()">
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="footer">
+    <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
+                                                                                target="_blank" title="模板之家">模板之家</a> -
+        Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+</div>
+<script type="text/javascript" th:src="@{/js/login/login.js}"></script>
+</body>
+</html>
