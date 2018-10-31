@@ -2,10 +2,30 @@
     margin-right: 5px;
     margin-left: 10px;
 }
-.footer{
+
+.footer {
     height: 30px;
     width: 100%;
     background-color: #ffffff;
     position: fixed;
     bottom: 0;
 }
+
+.zlc-lable-margin {
+    margin-left: 30px;
+    width: 110px;
+    /*内容上下居中*/
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.zlc-lable-span{
+    float: right;
+    margin-right: 15px;
+}
+
+.zlc-div-margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
