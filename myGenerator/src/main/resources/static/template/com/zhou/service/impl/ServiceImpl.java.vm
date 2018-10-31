@@ -36,7 +36,7 @@ public class ${className}ServiceImpl implements ${className}Service<${className}
     }
 
     @Override
-    public SysMenu queryObj(${className} ${className.substring(0,1).toLowerCase()}${className.substring(1)}) {
+    public ${className} queryObj(${className} ${className.substring(0,1).toLowerCase()}${className.substring(1)}) {
         return mapper.query(${className.substring(0,1).toLowerCase()}${className.substring(1)});
     }
 
