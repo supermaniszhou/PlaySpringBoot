@@ -1132,14 +1132,14 @@
     <!-- Right Slidebar end -->
 
     <!--footer start-->
-    <footer class="site-footer">
+    <!--<footer class="site-footer">
         <div class="text-center">
             2013 &copy; FlatLab by VectorLab.
             <a href="#" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
         </div>
-    </footer>
+    </footer>-->
     <!--footer end-->
 </section>
 <script>
@@ -1179,7 +1179,7 @@
                 var url = data.href;
                 if (url == null || url == "") {
                 } else {
-                    var height=$(window).height()-105;
+                    var height=$(window).height()-55;
                     var tmp = '<iframe frameborder="0" scrolling="no" allowTransparency="false" style=" background-color:#fff9ec;" src="' + url + '" width="100%" height="'+height+'px" ></iframe>';
                     $('.wrapper').html(tmp);
                 }

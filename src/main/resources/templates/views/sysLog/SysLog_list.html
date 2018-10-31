@@ -78,12 +78,7 @@
 
 <script th:src="@{/js/sys/sysLog/SysLogList.js}"></script>
 <script th:src="@{/js/sys/sysLog/SysLogAdd_Edit.js}"></script>
-<style>
-    .login-dialog {
-        /*width: 300px;*/
-        height: 500px;
-    }
-</style>
+
 <script>
     function test() {
         var data1 = 'Apple';
@@ -129,8 +124,10 @@
                 action: function (dialogRef) {
                     var d = {};
                     var formData = dialogRef.getModalBody().find('form').serializeArray();
-                    $.each();
-                    console.log(fruit);
+                    $.each(formData,function (i,item) {
+                        d[item.name]=item.value;
+                    });
+                    console.log(d);
                     // dialogRef.close();
 
                     // alert(dialogRef.getData('data1'));
