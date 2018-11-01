@@ -9,14 +9,12 @@ var ${className.substring(0,1).toLowerCase()}${className.substring(1)}AddEdit = 
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                #foreach($f in $fieldList)
+##                #foreach($f in $fieldList)
+                #foreach($f in $fieldRemarks.entrySet())
                     $f: {
                         validators: {
                             notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                                message: '${f.value}不可为空！',
                             }
                         }
                     },
