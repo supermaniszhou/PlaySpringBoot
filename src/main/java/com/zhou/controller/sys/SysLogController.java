@@ -4,17 +4,13 @@ import com.github.pagehelper.PageHelper;
 import com.zhou.base.BaseController;
 import com.zhou.entity.sys.SysLog;
 import com.zhou.service.sys.SysLogService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.support.PagedListHolder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +52,7 @@ public class SysLogController extends BaseController {
 
     @RequestMapping(value = "/doAdd")
     @ResponseBody
-    public Map<String, Object> doAdd(SysLog sysLog) {
+    public Map<String, Object> doAdd(HttpServletRequest request,SysLog sysLog) {
         try {
             sysLogService.addObj(sysLog);
         } catch (Exception e) {

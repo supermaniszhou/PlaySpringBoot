@@ -29,6 +29,12 @@
             <if test="menuUrl !=null and menuUrl !=''">
                 and MENU_URL=#{menuUrl}
             </if>
+            <if test="menuIcon !=null and menuIcon !=''">
+                and MENU_ICON=#{menuIcon}
+            </if>
+            <if test="yesNo !=null and yesNo !=''">
+                and YES_NO=#{yesNo}
+            </if>
         </where>
     </sql>
 
@@ -64,6 +70,12 @@
             <if test="menuUrl !=null and menuUrl !=''">
                 MENU_URL,
             </if>
+            <if test="menuIcon !=null and menuIcon !=''">
+                MENU_ICON,
+            </if>
+            <if test="yesNo !=null and yesNo !=''">
+                YES_NO,
+            </if>
         </trim>
         ) VALUES (
         <trim suffixOverrides=",">
@@ -90,6 +102,12 @@
             </if>
             <if test="menuUrl !=null and menuUrl !=''">
                 #{menuUrl},
+            </if>
+            <if test="menuIcon !=null and menuIcon !=''">
+                #{menuIcon},
+            </if>
+            <if test="yesNo !=null and yesNo !=''">
+                #{yesNo},
             </if>
         </trim>
         )
@@ -122,6 +140,12 @@
             <if test="menuUrl !=null and menuUrl !=''">
                 MENU_URL=#{menuUrl},
             </if>
+            <if test="menuIcon !=null and menuIcon !=''">
+                MENU_ICON=#{menuIcon},
+            </if>
+            <if test="yesNo !=null and yesNo !=''">
+                YES_NO=#{yesNo},
+            </if>
         </trim>
         <where>
             1=1
@@ -129,7 +153,33 @@
                 <if test="id !=null and id !=''">
                     and ID=#{id}
                 </if>
-
+                <if test="menuName !=null and menuName !=''">
+                    and MENU_NAME=#{menuName}
+                </if>
+                <if test="menuLevel !=null and menuLevel !=''">
+                    and MENU_LEVEL=#{menuLevel}
+                </if>
+                <if test="menuParent !=null and menuParent !=''">
+                    and MENU_PARENT=#{menuParent}
+                </if>
+                <if test="menuOrder !=null and menuOrder !=''">
+                    and MENU_ORDER=#{menuOrder}
+                </if>
+                <if test="menuChild !=null and menuChild !=''">
+                    and MENU_CHILD=#{menuChild}
+                </if>
+                <if test="memo !=null and memo !=''">
+                    and MEMO=#{memo}
+                </if>
+                <if test="menuUrl !=null and menuUrl !=''">
+                    and MENU_URL=#{menuUrl}
+                </if>
+                <if test="menuIcon !=null and menuIcon !=''">
+                    and MENU_ICON=#{menuIcon}
+                </if>
+                <if test="yesNo !=null and yesNo !=''">
+                    and YES_NO=#{yesNo}
+                </if>
             </trim>
         </where>
     </update>
@@ -163,6 +213,12 @@
                 <if test="menuUrl !=null and menuUrl !=''">
                     and MENU_URL=#{menuUrl},
                 </if>
+                <if test="menuIcon !=null and menuIcon !=''">
+                    and MENU_ICON=#{menuIcon},
+                </if>
+                <if test="yesNo !=null and yesNo !=''">
+                    and YES_NO=#{yesNo},
+                </if>
             </trim>
 
         </where>
@@ -179,6 +235,8 @@
             MENU_CHILD AS menuChild,
             MEMO AS memo,
             MENU_URL AS menuUrl,
+            MENU_ICON AS menuIcon,
+            YES_NO AS yesNo,
         </trim>
         from ZLC.sys_menu
         <where>
@@ -186,7 +244,33 @@
             <if test="id !=null and id !=''">
                 and ID=#{id}
             </if>
-
+            <if test="menuName !=null and menuName !=''">
+                and MENU_NAME=#{menuName}
+            </if>
+            <if test="menuLevel !=null and menuLevel !=''">
+                and MENU_LEVEL=#{menuLevel}
+            </if>
+            <if test="menuParent !=null and menuParent !=''">
+                and MENU_PARENT=#{menuParent}
+            </if>
+            <if test="menuOrder !=null and menuOrder !=''">
+                and MENU_ORDER=#{menuOrder}
+            </if>
+            <if test="menuChild !=null and menuChild !=''">
+                and MENU_CHILD=#{menuChild}
+            </if>
+            <if test="memo !=null and memo !=''">
+                and MEMO=#{memo}
+            </if>
+            <if test="menuUrl !=null and menuUrl !=''">
+                and MENU_URL=#{menuUrl}
+            </if>
+            <if test="menuIcon !=null and menuIcon !=''">
+                and MENU_ICON=#{menuIcon}
+            </if>
+            <if test="yesNo !=null and yesNo !=''">
+                and YES_NO=#{yesNo}
+            </if>
         </where>
     </select>
 
@@ -201,6 +285,8 @@
             MENU_CHILD AS menuChild,
             MEMO AS memo,
             MENU_URL AS menuUrl,
+            MENU_ICON AS menuIcon,
+            YES_NO AS yesNo,
         </trim>
         from ZLC.sys_menu
         <include refid="searchCondition"></include>
@@ -218,6 +304,8 @@
             MENU_CHILD AS menuChild,
             MEMO AS memo,
             MENU_URL AS menuUrl,
+            MENU_ICON AS menuIcon,
+            YES_NO AS yesNo,
         </trim>
         from ZLC.sys_menu
     </select>

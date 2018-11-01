@@ -2,39 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="/common/main_head::mainHeader"></head>
 
+
 <body>
 <div id="wrapperZlc">
     <div id="page-innerZlc">
-        <div style="margin-top: 10px;">
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">菜单名称</label>
-                    <div class="layui-input-inline">
-                        <input type="tel" name="menuName" lay-verify="required|phone" autocomplete="off" class="form-control">
+        <div style="margin-top: 10px; margin-bottom: 20px;">
+            <form class="form-inline">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="usernameForm" class="lable-margin">菜单名称</label>
+                        <input type="text" name="menuName" class="form-control" id="usernameForm" placeholder="">
                     </div>
                 </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">菜单名称</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="form-control">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">验证邮箱</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="email" lay-verify="email" autocomplete="off" class="form-control">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <button type="button" class="btn btn-default"   onclick="sysMenuModle.SearchData();">
-                        查询
-                    </button>
-                    &nbsp;&nbsp;&nbsp;
-                    <a class="btn btn-primary" data-toggle="modal" onclick="sysMenuAddEdit.toAdd();">新增</a>
-                </div>
-            </div>
 
-
+                <button type="button" class="btn btn-default" onclick="sysMenuModle.SearchData();"> 查询</button>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" data-toggle="modal" onclick="sysMenuAddEdit.toAdd();">新增</a>
+            </form>
 
         </div>
         <div class="row">
@@ -189,70 +173,37 @@
 <script th:src="@{/js/sys/sysMenu/SysMenuList.js}"></script>
 <script th:src="@{/js/sys/sysMenu/SysMenuAdd_Edit.js}"></script>
 <script>
-    var data1 = [];
-    $(function () {
-        $.post("/sysMenu/getMenuList", null, function (data) {
-            // $('#treeview').treeview({
-            //     data: data,         // data is not optional
-            //     levels: 5,
-            //     backColor: '#ffffff',
-            //     color: '#030303',
-            //     selectedBackColor: '#ffff2',
-            //     highlightSelected: true,
-            //     onhoverColor: '#6ccebc',
-            //     // selectedIcon: 'glyphicon glyphicon-arrow-right'
-            // });
-            data1 = data;
-        });
-    });
 
-
-    function buildDomTree() {
-        alert(JSON.stringify(data1))
-        var data = [];
-        var root = "所有分类";
-
-        function walk(nodes, data) {
-            if (!nodes) {
-                return;
-            }
-            $.each(nodes, function (id, node) {
-                var obj = {
-                    id: node.id,
-                    text: node.text != null ? node.text : root
-                    // 										tags : [ node.isLeaf == true ? node.
-                    // 												+ ' child elements'
-                    // 												: '' ]
-                };
-                if (node.isLeaf = true) {
-                    obj.nodes = [];
-                    walk(node.children, obj.nodes);
-                }
-                data.push(obj);
-            });
+    function test() {
+        var selRows = $table.bootstrapTable("getSelections");
+        if (selRows.length == 0) {
+            alert("请至少选择一行");
+            return;
         }
 
-        walk(data1, data);
-        return data;
+        var postData = "";
+        $.each(selRows, function (i) {
+            postData += this.id;
+            if (i < selRows.length - 1) {
+                postData += "， ";
+            }
+        });
+        alert("你选中行的 id 为：" + postData);
+
     }
 
+    function add(id) {
+        alert("add 方法 , id = " + id);
+    }
 
-    $("#menuParent").click(function () {
-        var options = {
-            bootstrap2: false,
-            showTags: true,
-            levels: 5,
-            showCheckbox: true,
-            checkedIcon: "glyphicon glyphicon-check",
-            data: buildDomTree(),
-            onNodeSelected: function (event, data) {
-                $("#menuParent").val(data.text);
-                $("#treeview").hide();
-            }
-        };
+    function del(id) {
+        alert("del 方法 , id = " + id);
+    }
 
-        $('#treeview').treeview(options);
-    });
+    function update(id) {
+        alert("update 方法 , id = " + id);
+    }
+
 
 </script>
 </body>

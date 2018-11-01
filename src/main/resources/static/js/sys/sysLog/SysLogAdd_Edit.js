@@ -9,87 +9,72 @@ var sysLogAddEdit = (function () {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                                    id: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
+
+                userId: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
                         }
-                    },
-                                    userId: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
+                    }
+                },
+                userName: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                        },
+                        // regexp: {
+                        //     regexp: /^[a-zA-Z]+$/,
+                        //     message: '账户名必须为字母'
+                        // },
+                        // callback: {
+                        //     message: 'Wrong answer',
+                        //     callback: function(value, validator) {
+                        //         var sum='a';
+                        //         return value == sum;
+                        //     }
+                        // }
+                    }
+                },
+                userIp: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
                         }
-                    },
-                                    userName: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
+                    }
+                },
+                userMac: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+
                         }
-                    },
-                                    userIp: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
+                    }
+                },
+                oporateComment: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+
                         }
-                    },
-                                    userMac: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
+                    }
+                },
+                // oporateTime: {
+                //     validators: {
+                //         notEmpty: {
+                //             message: '账号名称不可以为空！',
+                //
+                //         }
+                //     }
+                // },
+                opotateType: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+
                         }
-                    },
-                                    oporateComment: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
-                        }
-                    },
-                                    oporateTime: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
-                        }
-                    },
-                                    opotateType: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
-                            }
-                        }
-                    },
-                            }
+                    }
+                },
+            }
         });
     });
 
@@ -105,11 +90,13 @@ var sysLogAddEdit = (function () {
         //手动触发验证
         bootstrapValidator.validate();
         if (bootstrapValidator.isValid()) {
-            $.post("/sysLog/doAdd", $("#sysLogForm").serialize(), function (data) {
-                document.getElementById('sysLogForm').reset();
+            var d = {};
+            var formData = $("#sysLogForm").serializeArray();
+            $.each(formData, function (i, item) {
+                d[item.name] = item.value;
+            });
+            $.post("/sysLog/doAdd", d, function (data) {
                 if (data.code == 0) {
-                    document.getElementById('sysLogForm').reset();
-                    $('#sysLogAdd').modal('hide');
                     BootstrapDialog.show({
                         type: BootstrapDialog.TYPE_SUCCESS,
                         title: '成功 ',
@@ -119,9 +106,9 @@ var sysLogAddEdit = (function () {
                             setTimeout(function () {
                                 dialogRef.close();
                             }, 1000);
+                            $("#SysLogtable").bootstrapTable('refresh');
                         }
                     });
-                    $("#SysLogtable").bootstrapTable('refresh');
                 } else {
                     BootstrapDialog.show({
                         type: BootstrapDialog.TYPE_DANGER,
@@ -170,21 +157,21 @@ var sysLogAddEdit = (function () {
 
     function showEdit(data) {
         var u = data.data;
-                    $("#id").val(u.id);
-                    $("#userId").val(u.userId);
-                    $("#userName").val(u.userName);
-                    $("#userIp").val(u.userIp);
-                    $("#userMac").val(u.userMac);
-                    $("#oporateComment").val(u.oporateComment);
-                    $("#oporateTime").val(u.oporateTime);
-                    $("#opotateType").val(u.opotateType);
-                //显示模态框
+        $("#id").val(u.id);
+        $("#userId").val(u.userId);
+        $("#userName").val(u.userName);
+        $("#userIp").val(u.userIp);
+        $("#userMac").val(u.userMac);
+        $("#oporateComment").val(u.oporateComment);
+        $("#oporateTime").val(u.oporateTime);
+        $("#opotateType").val(u.opotateType);
+        //显示模态框
         $(".modal-footer").html("");
         $(".modal-title").html("");
-        if(data.flag=='edit'){
+        if (data.flag == 'edit') {
             $(".modal-title").html("修改");
             $(".modal-footer").append('<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button><button type="button" class="btn btn-primary" onclick="sysLogAddEdit.doEdit()">确认修改</button>');
-        }else if(data.flag=='view'){
+        } else if (data.flag == 'view') {
             $(".modal-title").html("查看");
         }
         $('#sysLogAdd').modal('show');

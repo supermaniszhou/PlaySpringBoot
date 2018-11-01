@@ -12,6 +12,8 @@ public class SysMenu implements Serializable{
     private String menuChild;//子级
     private String memo;//描述
     private String menuUrl;//地址
+    private String menuIcon;//图标
+    private Integer yesNo;//是否启用
     public SysMenu(){}
     public Integer getId() {
         return id;
@@ -68,6 +70,20 @@ public class SysMenu implements Serializable{
 
     public void setMenuUrl(String menuUrl) {
         this.menuUrl = menuUrl;
+    }
+    public String getMenuIcon() {
+        return menuIcon;
+    }
+
+    public void setMenuIcon(String menuIcon) {
+        this.menuIcon = menuIcon;
+    }
+    public Integer getYesNo() {
+        return yesNo;
+    }
+
+    public void setYesNo(Integer yesNo) {
+        this.yesNo = yesNo;
     }
 
 }

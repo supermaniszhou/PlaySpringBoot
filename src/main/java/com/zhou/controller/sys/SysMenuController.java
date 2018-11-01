@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/12/25 0025.
@@ -40,16 +37,24 @@ public class SysMenuController extends BaseController {
 
     @RequestMapping("/getSysMenuData")
     @ResponseBody
-    public Map<String, Object> getSysMenuData(@RequestParam(value = "pageSize", required = false) int pageSize,
-                                              @RequestParam(value = "pageIndex", required = false) int pageIndex) {
+    public Map<String, Object> getSysMenuData() {
 
         Map<String, Object> map = new HashedMap();
         SysMenu sysMenu = new SysMenu();
         int count = sysMenuService.queryCount(sysMenu);
-        List<SysMenu> list = sysMenuService.queryList(sysMenu, pageIndex, pageSize);
-
+        List<SysMenu> list = sysMenuService.queryList(sysMenu, 0, 0);
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        for (SysMenu menu : list
+                ) {
+            Map<String, Object> m = new HashMap<>();
+            m.put("id", menu.getId());
+            m.put("pid", menu.getMenuParent());
+            m.put("menuName", menu.getMenuName());
+            m.put("url", menu.getMenuUrl());
+            mapList.add(m);
+        }
         map.put("total", count);
-        map.put("rows", list);
+        map.put("rows", mapList);
         return map;
     }
 

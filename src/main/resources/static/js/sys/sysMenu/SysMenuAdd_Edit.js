@@ -9,87 +9,87 @@ var sysMenuAddEdit = (function () {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                                    id: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                id: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    menuName: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                menuName: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    menuLevel: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                menuLevel: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    menuParent: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                menuParent: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    menuOrder: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                menuOrder: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    menuChild: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                menuChild: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    memo: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                memo: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                                    menuUrl: {
-                        validators: {
-                            notEmpty: {
-                                message: '账号名称不可以为空！',
-                                callback: function (value, validator) {
-                                    flag = false;
-                                }
+                    }
+                },
+                menuUrl: {
+                    validators: {
+                        notEmpty: {
+                            message: '账号名称不可以为空！',
+                            callback: function (value, validator) {
+                                flag = false;
                             }
                         }
-                    },
-                            }
+                    }
+                },
+            }
         });
     });
 
@@ -170,21 +170,21 @@ var sysMenuAddEdit = (function () {
 
     function showEdit(data) {
         var u = data.data;
-                    $("#id").val(u.id);
-                    $("#menuName").val(u.menuName);
-                    $("#menuLevel").val(u.menuLevel);
-                    $("#menuParent").val(u.menuParent);
-                    $("#menuOrder").val(u.menuOrder);
-                    $("#menuChild").val(u.menuChild);
-                    $("#memo").val(u.memo);
-                    $("#menuUrl").val(u.menuUrl);
-                //显示模态框
+        $("#id").val(u.id);
+        $("#menuName").val(u.menuName);
+        $("#menuLevel").val(u.menuLevel);
+        $("#menuParent").val(u.menuParent);
+        $("#menuOrder").val(u.menuOrder);
+        $("#menuChild").val(u.menuChild);
+        $("#memo").val(u.memo);
+        $("#menuUrl").val(u.menuUrl);
+        //显示模态框
         $(".modal-footer").html("");
         $(".modal-title").html("");
-        if(data.flag=='edit'){
+        if (data.flag == 'edit') {
             $(".modal-title").html("修改");
             $(".modal-footer").append('<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button><button type="button" class="btn btn-primary" onclick="sysMenuAddEdit.doEdit()">确认修改</button>');
-        }else if(data.flag=='view'){
+        } else if (data.flag == 'view') {
             $(".modal-title").html("查看");
         }
         $('#sysMenuAdd').modal('show');
